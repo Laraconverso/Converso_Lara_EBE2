@@ -27,6 +27,7 @@ public class SecurityConfig {
                 .and()
                 .logout()
                 .logoutSuccessHandler(oidcServerLogoutSuccessHandler());
+        http.csrf().disable();
         return http.build();
     }
 

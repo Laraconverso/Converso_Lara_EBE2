@@ -1,0 +1,13 @@
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/repository/FeignBillRepository.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/domain/User.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/domain/Bill.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/repository/KeycloakUserRepository.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/configuration/feign/FeignInterceptor.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/MsUsersApplication.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/configuration/feign/OAuthClientCredentialsFeignManager.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/controller/UserController.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/configuration/OAuth2ResourceServerSecurityConfiguration.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/configuration/KeyCloakJwtAuthenticationConverter.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/configuration/feign/OAuthFeignConfig.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/service/UserService.java
+/Users/laraconverso/Desktop/Stuff/CTD/CONVERSO-LARA/ms-users/src/main/java/com/example/msusers/repository/BillRepository.java

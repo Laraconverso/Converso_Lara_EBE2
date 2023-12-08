@@ -12,15 +12,15 @@ import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class KeyCloakJwtAuthenticationConverter implements Converter<Jwt, AbstractAuthenticationToken> {
   private final JwtGrantedAuthoritiesConverter defaultGrantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
+
+  public KeyCloakJwtAuthenticationConverter() {
+  }
 
   private static Collection<? extends GrantedAuthority> extractResourceRoles(final Jwt jwt) throws JsonProcessingException {
     Set<GrantedAuthority> resourcesRoles = new HashSet();
@@ -28,7 +28,7 @@ public class KeyCloakJwtAuthenticationConverter implements Converter<Jwt, Abstra
     objectMapper.registerModule(new JavaTimeModule());
     resourcesRoles.addAll(extractRoles("resource_access", objectMapper.readTree(objectMapper.writeValueAsString(jwt)).get("claims")));
     resourcesRoles.addAll(extractRolesRealmAccess("realm_access", objectMapper.readTree(objectMapper.writeValueAsString(jwt)).get("claims")));
-    resourcesRoles.addAll(extractAud("aud", objectMapper.readTree(objectMapper.writeValueAsString(jwt)).get("claims")));
+    resourcesRoles.addAll(extractGroups("groups", objectMapper.readTree(objectMapper.writeValueAsString(jwt)).get("claims")));
     return resourcesRoles;
   }
 
@@ -74,10 +74,6 @@ public class KeyCloakJwtAuthenticationConverter implements Converter<Jwt, Abstra
   }
 
 
-
-  public KeyCloakJwtAuthenticationConverter() {
-  }
-
   public AbstractAuthenticationToken convert(final Jwt source) {
     Collection<GrantedAuthority> authorities = null;
     try {
@@ -91,4 +87,15 @@ public class KeyCloakJwtAuthenticationConverter implements Converter<Jwt, Abstra
   public Collection<GrantedAuthority> getGrantedAuthorities(Jwt source) throws JsonProcessingException {
     return (Collection) Stream.concat(this.defaultGrantedAuthoritiesConverter.convert(source).stream(), extractResourceRoles(source).stream()).collect(Collectors.toSet());
   }
+
+  private static List<GrantedAuthority> extractGroups(String route, JsonNode jwt) {
+    Set<String> groupsWithPrefix = new HashSet<>();
+    jwt.path(route)
+            .elements()
+            .forEachRemaining(e -> groupsWithPrefix.add("GROUP_" + e.asText()));
+    final List<GrantedAuthority> authorityList =
+            AuthorityUtils.createAuthorityList(groupsWithPrefix.toArray(new String[0]));
+    return authorityList;
+  }
+
 }

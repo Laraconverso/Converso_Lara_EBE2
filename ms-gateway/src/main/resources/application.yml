@@ -19,8 +19,14 @@ spring:
     gateway:
       default-filters: TokenRelay
       routes:
-        - id: ms-bill
-          uri: lb://ms-bill
+        - id: ms-bills
+          uri: lb://ms-bills
+          predicates:
+            - Path=/api/v1/**
+          filters:
+            - StripPrefix=2
+        - id: ms-users
+          uri: lb://ms-users
           predicates:
             - Path=/api/v1/**
           filters:
@@ -31,6 +37,7 @@ spring:
         provider:
           keycloak-provider:
             issuer-uri: http://localhost:8080/realms/DigitalCommerce
+
         registration:
           api-gateway:
             provider: keycloak-provider

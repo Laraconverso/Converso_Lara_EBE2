@@ -1,8 +1,50 @@
-Ususrio : user1
-password: user1
+Especificaciones del proyecto:
 
 client: api-getaway-client
 role: user
 puerto: 9090
 redirect uri: http://localhost:9090/login/oauth2/code/keycloak
 issuer-uri: http://localhost:8080/realms/DigitalCommerce
+
+Urls de consulta:
+# ms-bills:
+Listado de usuarios ingresando con un usuario con role user: http://localhost:9090/api/v1/bills/all [GET]
+Consulta de factura por id de usuario ingresando con un usuario autenticado: http://localhost:9090/api/v1/bills/userId={id} [GET]
+Dar de alta facturas perteneciendo al grupo 'PROVIDERS': http://localhost:9090/api/v1/bills/ [POST]
+
+# ms-users:
+http://localhost:9090/api/v2/users/all
+http://localhost:9090/api/v2/users/userId={}
+
+Lista de usuarios:
+
+1) Usuario : user1
+   password: user1
+   Caracteristicas:
+    role: user
+
+2) Usuario : user_provider
+   password: 1111
+   Caracteristicas:
+    group: PROVIDERS
+
+3) Usuario : user_bills1
+   password: 1111
+   email: tengo1bill@gmail.com
+   email verified: true
+   FirstName: Bill
+   LastName: Uno
+
+5)Usuario : user_bills2
+  password: 1111
+  email: tengo2bills@gmail.com
+  email verified: true
+  FirstName: Elizabeth
+  LastName: Dos
+
+
+6) Usuario : user0
+   password: user0
+   role: ADMIN
+
+

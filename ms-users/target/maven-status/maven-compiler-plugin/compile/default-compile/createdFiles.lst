@@ -1,0 +1,15 @@
+com/example/msusers/configuration/feign/OAuthClientCredentialsFeignManager.class
+com/example/msusers/repository/FeignBillRepository.class
+com/example/msusers/service/UserService.class
+com/example/msusers/domain/User.class
+com/example/msusers/MsUsersApplication.class
+com/example/msusers/configuration/KeyCloakJwtAuthenticationConverter.class
+com/example/msusers/configuration/feign/OAuthFeignConfig.class
+com/example/msusers/domain/User$UserBuilder.class
+com/example/msusers/domain/Bill.class
+com/example/msusers/configuration/feign/OAuthClientCredentialsFeignManager$1.class
+com/example/msusers/repository/KeycloakUserRepository.class
+com/example/msusers/configuration/feign/FeignInterceptor.class
+com/example/msusers/repository/BillRepository.class
+com/example/msusers/configuration/OAuth2ResourceServerSecurityConfiguration.class
+com/example/msusers/controller/UserController.class
